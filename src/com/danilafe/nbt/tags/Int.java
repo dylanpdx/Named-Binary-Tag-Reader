@@ -11,10 +11,8 @@ import java.io.IOException;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class Int extends Tag{
-	
-	public int content = 0;
-	
+public class Int extends ValueTag{
+		
 	public Int(java.lang.String name, FileInputStream r){
 		super(name);
 		try {
@@ -22,15 +20,13 @@ public class Int extends Tag{
 			int s = r.read();
 			int t = r.read();
 			int fr = r.read();
-			content = (f << 24 | s << 16 | t << 8| fr);
+			content = (int)(f << 24 | s << 16 | t << 8| fr);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public Object getValue(){
-		return content;
-	}
+
 
 }

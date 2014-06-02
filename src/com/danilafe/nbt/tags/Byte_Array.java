@@ -11,9 +11,8 @@ import java.util.ArrayList;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class Byte_Array extends Tag{
+public class Byte_Array extends ListTag{
 
-	private ArrayList<Byte> bytes = new ArrayList<Byte>();
 	
 	public Byte_Array(java.lang.String name, FileInputStream r){
 		super(name);
@@ -26,19 +25,9 @@ public class Byte_Array extends Tag{
 			int totallength = i1 << 24 | i2 << 16 | i3 << 8 | i4 <<0;
 			for(int i = 0; i < totallength; i  ++){
 				
-				//Define vars
-				java.lang.String tname = "";
-				int length = 0;
+
 				
-				//Get the length of the name
-				length = r.read() << 8 | r.read();
-				
-				//Compile the name
-				for(int z = 0; z < length; z ++){
-					tname += (char) r.read();
-				}
-				
-				bytes.add(new Byte(tname, r));
+				content.add(new Byte("", r));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -47,9 +36,7 @@ public class Byte_Array extends Tag{
 
 	}
 	
-	public ArrayList<Byte> getBytes(){
-		return bytes;
-	}
+
 	
 	
 }

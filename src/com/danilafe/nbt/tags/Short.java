@@ -10,9 +10,8 @@ import java.io.IOException;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class Short extends Tag{
+public class Short extends ValueTag{
 
-	public short content = 0;
 	
 	public Short(java.lang.String name, FileInputStream r){
 		super(name);
@@ -28,8 +27,5 @@ public class Short extends Tag{
 		
 	}
 	
-	public Object getValue(){
-		return content;
-	}
 	
 }

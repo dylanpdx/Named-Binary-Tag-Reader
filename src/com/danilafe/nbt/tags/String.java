@@ -10,25 +10,23 @@ import java.io.IOException;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class String extends Tag{
+public class String extends ValueTag{
 	
-	public java.lang.String content = "";
-	
+
 	public String(java.lang.String name, FileInputStream r ){
 		super(name);
 		
 		try {
+			java.lang.String temp = "";
 			int length = r.read() << 8 | r.read();
 			for(int i = 0; i < length; i ++){
-				content += (char) r.read();
+				temp += (char) r.read();
 			}
+			content = temp;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public Object getValue(){
-		return content;
-	}
-	
+
 }

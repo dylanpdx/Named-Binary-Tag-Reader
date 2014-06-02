@@ -11,9 +11,8 @@ import java.io.IOException;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class Byte extends Tag {
+public class Byte extends ValueTag {
 
-	private byte content;
 	
 	public Byte(java.lang.String name, FileInputStream r) {
 		super(name);
@@ -27,8 +26,6 @@ public class Byte extends Tag {
 		
 	}
 	
-	public Object getValue(){
-		return content;
-	}
+
 
 }

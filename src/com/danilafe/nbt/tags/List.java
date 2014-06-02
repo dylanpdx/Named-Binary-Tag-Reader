@@ -13,47 +13,48 @@ import java.util.ArrayList;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class List extends Tag{
+public class List extends ListTag{
 	
-	byte type;
-	ArrayList<Tag> contents = new ArrayList<Tag>();
+	public byte type;
 	
 	public List(java.lang.String name, FileInputStream r){
 		super(name);
 		try {
 			type = (byte) r.read();
 			int length = r.read() << 24 | r.read() << 16 | r.read() << 8 | r.read();
+			System.out.println("My length is " + length);
 			for(int i = 0; i < length;i  ++){
+				System.out.println("Read something");
 				switch(type){
 				case 1:
-					contents.add(new Byte("", r));
+					content.add(new Byte("", r));
 					break;
 				case 2:
-					contents.add(new Short("", r));
+					content.add(new Short("", r));
 					break;
 				case 3:
-					contents.add(new Int("", r));
+					content.add(new Int("", r));
 					break;
 				case 4:
-					contents.add(new Long("", r));
+					content.add(new Long("", r));
 					break;
 				case 5:
-					contents.add(new Float("", r));
+					content.add(new Float("", r));
 					break;
 				case 6:
-					contents.add(new Double("", r));
+					content.add(new Double("", r));
 					break;
 				case 7:
-					contents.add(new Byte_Array("", r));
+					content.add(new Byte_Array("", r));
 					break;
 				case 8:
-					contents.add(new String("", r));
+					content.add(new String("", r));
 					break;
 				case 9:
-					contents.add(new List("", r));
+					content.add(new List("", r));
 					break;
 				case 10:
-					contents.add(new Compound("", r));
+					content.add(new Compound("", r));
 					break;
 				case 11:
 					break;
@@ -63,6 +64,8 @@ public class List extends Tag{
 			e.printStackTrace();
 		}
 	}
+	
+
 	
 
 }

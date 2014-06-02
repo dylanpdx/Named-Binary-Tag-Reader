@@ -10,9 +10,8 @@ import java.io.IOException;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class Float extends Tag{
+public class Float extends ValueTag{
 
-	public float content = 0;
 	
 	public Float(java.lang.String name, FileInputStream r){
 		super(name);
@@ -32,8 +31,6 @@ public class Float extends Tag{
 
 	}
 	
-	public Object getValue(){
-		return content;
-	}
+
 	
 }

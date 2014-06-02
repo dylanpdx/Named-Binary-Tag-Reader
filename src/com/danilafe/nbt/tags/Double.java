@@ -11,9 +11,8 @@ import java.io.IOException;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class Double extends Tag{
+public class Double extends ValueTag{
 
-	public double content = 0;
 	
 	public Double(java.lang.String name, FileInputStream r) {
 		super(name);
@@ -27,15 +26,13 @@ public class Double extends Tag{
 			int i7 = r.read();
 			int i8 = r.read();	
 			
-			content  = java.lang.Float.intBitsToFloat((i1 << 56 | i2 << 48 | i3 << 40| i4 << 32 | i5 << 24 | i6 << 16 | i7 << 8 | i8 << 0 ));
+			content  = (double)(java.lang.Float.intBitsToFloat((i1 << 56 | i2 << 48 | i3 << 40| i4 << 32 | i5 << 24 | i6 << 16 | i7 << 8 | i8 << 0 )));
 		} catch(IOException e){
 			
 		}
 
 	}
 	
-	public Object getValue(){
-		return content;
-	}
+
 
 }

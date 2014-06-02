@@ -8,8 +8,5 @@ public class Tag {
 		this.name = name;
 	}
 	
-	public Object getValue(){
-		return null;
-	}
 	
 }

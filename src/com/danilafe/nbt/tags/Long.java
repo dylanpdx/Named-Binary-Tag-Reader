@@ -10,9 +10,7 @@ import java.io.IOException;
  * @param name The name of the tag
  * @param r The reader to use
  */
-public class Long extends Tag{
-
-	public long content = 0;
+public class Long extends ValueTag{
 	
 	public Long(java.lang.String name, FileInputStream r){
 		super(name);
@@ -25,15 +23,13 @@ public class Long extends Tag{
 			int sx = r.read();
 			int sev = r.read();
 			int e = r.read();
-			content = (f << 56 | s << 48 | t << 40| fr << 32 | ff << 24 | sx << 16 | sev << 8 | e << 0 );
+			content = (long)(f << 56 | s << 48 | t << 40| fr << 32 | ff << 24 | sx << 16 | sev << 8 | e << 0 );
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public Object getValue(){
-		return content;
-	}
+
 	
 }
