@@ -5,4 +5,4 @@
  * @author DanilaFedorin
  *
  */
-package com.danilafe.nbt.GUI;
+package com.danilafe.nbt.debug.GUI;

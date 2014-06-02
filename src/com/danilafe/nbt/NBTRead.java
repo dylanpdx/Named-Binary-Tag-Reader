@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.danilafe.nbt.GUI.DisplayNodes;
+import com.danilafe.nbt.debug.GUI.DisplayNodes;
 import com.danilafe.nbt.tags.Compound;
 
 /**
@@ -30,6 +30,8 @@ public class NBTRead {
 	 * 10	 TAG_Compound	 ...	 Effectively a list of a named tags. Order is not guaranteed.
 	 * 11	 TAG_Int_Array	 ...	 A length-prefixed array of signed integers. The prefix is a signed integer (thus 4 bytes) and indicates the number of 4 byte integers.
 	 */
+	
+	Compound maincomp;
 	
 	/**
 	 * This class opens an unzipped NBT (Named Binary Tag) and parses it. As all NBT file start <br> with a compound tag, this class only has one method - to get the compound tag parsed.
@@ -56,7 +58,9 @@ public class NBTRead {
 						name += (char) (read = r.read());
 					}
 					
-					new DisplayNodes(new Compound(name, r));
+					
+					maincomp = new Compound(name, r);
+					new DisplayNodes(maincomp);
 					
 					
 				}

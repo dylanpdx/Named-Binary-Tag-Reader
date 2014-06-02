@@ -1,17 +1,13 @@
-package com.danilafe.nbt.GUI;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
+package com.danilafe.nbt.debug.GUI;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
+
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+
+import javax.swing.JLabel;
+import javax.swing.JEditorPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.danilafe.nbt.tags.Byte_Array;
@@ -21,28 +17,42 @@ import com.danilafe.nbt.tags.ListTag;
 import com.danilafe.nbt.tags.Tag;
 import com.danilafe.nbt.tags.ValueTag;
 
-public class DisplayNodes implements TreeSelectionListener{
+import javax.swing.JScrollPane;
 
-	JTree tree;
+public class DisplayNodes {
+
+	JFrame mainframe = new JFrame("NBT File Contents");
 	
+
 	public DisplayNodes(Compound main){
-		JFrame display = new JFrame("Contents of main node.");
+		mainframe.getContentPane().setLayout(null);
+		
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode(main.name);
-		tree = new JTree(top);
-		tree.addTreeSelectionListener(this);
-		JScrollPane p = new JScrollPane(tree);
+		
+		JLabel lblEditContents = new JLabel("Edit Contents");
+		lblEditContents.setBounds(16, 223, 85, 16);
+		mainframe.getContentPane().add(lblEditContents);
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setBounds(113, 223, 331, 16);
+		mainframe.getContentPane().add(editorPane);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(16, 6, 428, 213);
+		mainframe.getContentPane().add(scrollPane);
+		
+		JTree tree = new JTree(top);
+		scrollPane.setViewportView(tree);
+		
+		mainframe.setVisible(true);
+		mainframe.setSize(465, 265);
+		mainframe.setResizable(false);
 		
 		addCompoundContents(main, top);
 		
-		display.setSize(500,500);
-		display.setVisible(true);
-		display.add(p);
-		
-		
-		
 	}
 	
-	private void addCompoundContents(Compound c, DefaultMutableTreeNode top){
+	void addCompoundContents(Compound c, DefaultMutableTreeNode top){
 		ArrayList<Tag> v = (ArrayList<Tag>)c.getValue();
 		for(Tag t: v){
 			if(!(t instanceof ListTag)){
@@ -60,7 +70,7 @@ public class DisplayNodes implements TreeSelectionListener{
 			}
 		}
 	}
-	private void addCompoundContents(List c, DefaultMutableTreeNode top){
+	 void addCompoundContents(List c, DefaultMutableTreeNode top){
 		ArrayList<Tag> v = (ArrayList<Tag>)c.getValue();
 		for(Tag t: v){
 			if(!(t instanceof ListTag)){
@@ -79,7 +89,7 @@ public class DisplayNodes implements TreeSelectionListener{
 		}
 	}
 	
-	private void addCompoundContents(Byte_Array c, DefaultMutableTreeNode top){
+	 void addCompoundContents(Byte_Array c, DefaultMutableTreeNode top){
 		ArrayList<Tag> v = (ArrayList<Tag>)c.getValue();
 		for(Tag t: v){
 			if(!(t instanceof ListTag)){
@@ -97,13 +107,4 @@ public class DisplayNodes implements TreeSelectionListener{
 			}
 		}
 	}
-
-	@Override
-	public void valueChanged(TreeSelectionEvent e) {
-		DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-		if(node == null) return;
-		
-		
-	}
-	
 }
