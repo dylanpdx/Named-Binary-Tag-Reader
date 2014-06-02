@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Byte_Array extends Tag{
 
-	public ArrayList<Byte> bytes = new ArrayList<Byte>();
+	private ArrayList<Byte> bytes = new ArrayList<Byte>();
 	
 	public Byte_Array(java.lang.String name, FileInputStream r){
 		super(name);
@@ -45,6 +45,10 @@ public class Byte_Array extends Tag{
 			e.printStackTrace();
 		}
 
+	}
+	
+	public ArrayList<Byte> getBytes(){
+		return bytes;
 	}
 	
 	

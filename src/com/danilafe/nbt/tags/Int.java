@@ -28,5 +28,9 @@ public class Int extends Tag{
 			e.printStackTrace();
 		}
 	}
+	
+	public Object getValue(){
+		return content;
+	}
 
 }

@@ -38,7 +38,7 @@ public class DisplayNodes implements TreeSelectionListener{
 	private void addCompoundContents(Compound c, DefaultMutableTreeNode top){
 		for(Tag t: c.contents){
 			if(!(t instanceof Compound)){
-				top.add(new DefaultMutableTreeNode(t.name));
+				top.add(new DefaultMutableTreeNode(t.getValue() + " " + t.name));
 			} else {
 				DefaultMutableTreeNode newtag = new DefaultMutableTreeNode(t.name);
 				top.add(newtag);

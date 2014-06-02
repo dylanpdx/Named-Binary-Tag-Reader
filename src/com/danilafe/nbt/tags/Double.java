@@ -33,5 +33,9 @@ public class Double extends Tag{
 		}
 
 	}
+	
+	public Object getValue(){
+		return content;
+	}
 
 }

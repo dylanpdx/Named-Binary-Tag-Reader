@@ -28,4 +28,8 @@ public class Short extends Tag{
 		
 	}
 	
+	public Object getValue(){
+		return content;
+	}
+	
 }

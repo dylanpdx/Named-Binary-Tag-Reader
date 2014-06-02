@@ -27,4 +27,8 @@ public class String extends Tag{
 		}
 	}
 	
+	public Object getValue(){
+		return content;
+	}
+	
 }

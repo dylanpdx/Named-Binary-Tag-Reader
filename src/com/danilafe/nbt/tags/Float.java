@@ -32,4 +32,8 @@ public class Float extends Tag{
 
 	}
 	
+	public Object getValue(){
+		return content;
+	}
+	
 }

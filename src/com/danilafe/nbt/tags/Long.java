@@ -32,4 +32,8 @@ public class Long extends Tag{
 		}
 	}
 	
+	public Object getValue(){
+		return content;
+	}
+	
 }

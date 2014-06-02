@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class Byte extends Tag {
 
-	public byte content;
+	private byte content;
 	
 	public Byte(java.lang.String name, FileInputStream r) {
 		super(name);
@@ -25,6 +25,10 @@ public class Byte extends Tag {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public Object getValue(){
+		return content;
 	}
 
 }
